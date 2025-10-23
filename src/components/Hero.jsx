@@ -32,7 +32,7 @@ const Hero = () => {
           loop
           muted
           playsInline
-          src="https://videos.pexels.com/video-files/3843431/3843431-hd_1920_1080_25fps.mp4"
+          src="/videos/videofondo.mp4"
         ></video>
       </div>
 

@@ -76,7 +76,7 @@ const About = () => {
               className="absolute inset-0 w-full h-full object-cover"
               style={{ clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)' }}
               alt="Mecánico trabajando en un motor con herramientas avanzadas"
-              src="https://images.unsplash.com/photo-1621999330922-263a6a12a58b" 
+              src="/imagenes/img2.jpg" 
             />
           </motion.div>
         </div>

@@ -103,19 +103,25 @@ const Contact = () => {
 
 const InfoItem = ({ icon, title, text, link }) => {
   const content = (
-    <div className="flex items-center gap-4 group">
+    <div className="flex items-center gap-5 group py-2">
       <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center flex-shrink-0 border border-white/10 group-hover:bg-green-500/20 group-hover:border-green-500/50 transition-all">
         {React.cloneElement(icon, { className: "w-6 h-6 text-green-300" })}
       </div>
-      <div>
+      <div className="flex flex-col justify-center leading-tight">
         <p className="text-white font-semibold">{title}</p>
-        <p className="text-gray-400 group-hover:text-white transition-colors">{text}</p>
+        <p className="text-gray-400 group-hover:text-white transition-colors">
+          {text}
+        </p>
       </div>
     </div>
   );
 
   if (link) {
-    return <a href={link} target="_blank" rel="noopener noreferrer">{content}</a>;
+    return (
+      <a href={link} target="_blank" rel="noopener noreferrer">
+        {content}
+      </a>
+    );
   }
   return content;
 };
