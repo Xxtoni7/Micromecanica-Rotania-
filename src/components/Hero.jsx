@@ -91,6 +91,7 @@ const Hero = () => {
           <ChevronDown className="w-10 h-10 text-white/50" />
         </motion.div>
       </motion.div>
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#111C17]/95 via-[#0E1612]/80 to-transparent z-30"></div>
     </section>
   );
 };

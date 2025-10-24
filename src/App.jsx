@@ -17,7 +17,7 @@ function App() {
         <meta name="description" content="Especialistas en reparación de instrumental automotor, aire acondicionado, alternadores, arranque y más. +30 años de experiencia con tecnología de diagnóstico avanzada." />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" />
       </Helmet>
-      <div className="min-h-screen bg-[#0A100D] text-white font-poppins">
+      <div className="min-h-screen bg-background text-white font-poppins">
         <Navbar />
         <main>
           <Hero />

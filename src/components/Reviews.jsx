@@ -23,7 +23,7 @@ const Reviews = () => {
   };
 
   return (
-    <section id="calificaciones" className="py-32 bg-gradient-to-b from-[#0F172A] to-[#0A100D] relative overflow-hidden">
+    <section id="calificaciones" className="py-32 bg-gradient-to-b from-[#101418] to-[#0E1612] relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}

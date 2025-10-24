@@ -37,7 +37,7 @@ const About = () => {
   };
 
   return (
-    <section id="nosotros" className="relative py-32 bg-[#0A100D] overflow-hidden">
+    <section id="nosotros" className="relative py-32 bg-[#111C17] overflow-hidden">
       <div className="absolute -left-1/4 top-0 w-1/2 h-full bg-gradient-to-r from-green-900/10 via-green-900/5 to-transparent rounded-full blur-3xl -rotate-45"></div>
       
       <div className="container mx-auto px-4 relative z-10" ref={ref}>

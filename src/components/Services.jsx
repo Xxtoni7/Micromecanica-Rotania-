@@ -46,7 +46,7 @@ const Services = () => {
   };
 
   return (
-    <section id="servicios" className="py-32 bg-gradient-to-b from-[#0A100D] to-[#0F172A] relative overflow-hidden">
+    <section id="servicios" className="py-32 bg-gradient-to-b from-[#111C17] to-[#101418] relative overflow-hidden">
       <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(37,99,71,0.2),rgba(255,255,255,0))]"></div>
 
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
