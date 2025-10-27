@@ -24,14 +24,14 @@ const Services = () => {
       description: 'Diagnóstico y reparación de instrumental, aire acondicionado, alternadores, y más.',
     },
     {
-      icon: Sparkles,
-      title: 'Estética Automotriz',
-      description: 'Pulido, corrección de pintura, tratamiento de ópticas y protección cerámica.',
-    },
-    {
       icon: Package,
       title: 'Venta de Repuestos',
       description: 'Sensores, bombas de combustible y sistemas de iluminación LED/Xenón originales.',
+    },
+    {
+      icon: Sparkles,
+      title: 'Estética Automotriz',
+      description: 'Pulido, corrección de pintura, tratamiento de ópticas y protección cerámica.',
     }
   ];
   

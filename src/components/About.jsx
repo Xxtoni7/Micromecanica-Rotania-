@@ -1,24 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
-import { Award, Wrench, ShieldCheck } from 'lucide-react';
+import { Compass, Users, Settings } from 'lucide-react';
 
 const About = () => {
   const [ref, isInView] = useInView({ threshold: 0.3, once: true });
 
   const features = [
     {
-      icon: <Award className="w-8 h-8 text-green-300" />,
-      title: '+30 años de experiencia',
+      icon: <Compass className="w-8 h-8 text-green-300" />,
+      title: 'Innovación constante',
     },
     {
-      icon: <Wrench className="w-8 h-8 text-green-300" />,
-      title: 'Tecnología de diagnóstico',
+      icon: <Users className="w-8 h-8 text-green-300" />,
+      title: 'Equipo comprometido',
     },
     {
-      icon: <ShieldCheck className="w-8 h-8 text-green-300" />,
-      title: 'Garantía y Repuestos',
-    }
+      icon: <Settings className="w-8 h-8 text-green-300" />,
+      title: 'Precisión en cada trabajo',
+    },
   ];
 
   const containerVariants = {

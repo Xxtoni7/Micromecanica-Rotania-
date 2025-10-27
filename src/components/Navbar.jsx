@@ -35,26 +35,42 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-[#0A100D]/80 backdrop-blur-lg shadow-lg shadow-black/20 border-b border-white/10' : 'bg-transparent'
+          isScrolled
+            ? 'bg-[#0A100D]/80 backdrop-blur-lg shadow-lg shadow-black/20 border-b border-white/10'
+            : 'bg-transparent'
         }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-20">
-            <div 
-              className="text-2xl font-bold text-white cursor-pointer"
+            {/* 🔹 LOGO EN CÍRCULO */}
+            <div
               onClick={() => scrollToSection('inicio')}
+              className="flex items-center gap-2 cursor-pointer select-none"
             >
-              <span className="text-green-400">MR</span> SRL
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-green-500 shadow-md hover:shadow-green-500/40 transition-shadow duration-300">
+                <img
+                  src="/Logo/logo.jpg" 
+                  alt="MR SRL Logo"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <span className="hidden sm:block text-white font-semibold text-lg tracking-wide">
+                MR SRL
+              </span>
             </div>
 
+            {/* LINKS DESKTOP */}
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  onClick={(e) => { e.preventDefault(); scrollToSection(item.id); }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.id);
+                  }}
                   className="text-gray-300 hover:text-white transition-colors font-medium relative group"
                 >
                   <span>{item.label}</span>
@@ -63,14 +79,22 @@ const Navbar = () => {
               ))}
             </div>
 
+            {/* BOTÓN CONTACTO */}
             <div className="hidden md:block">
-              <Button onClick={() => scrollToSection('contacto')} className="bg-[#0B4F3A] hover:bg-green-700 text-white font-semibold rounded-full px-6 transition-all duration-300 transform hover:scale-105">
+              <Button
+                onClick={() => scrollToSection('contacto')}
+                className="bg-[#0B4F3A] hover:bg-green-700 text-white font-semibold rounded-full px-6 transition-all duration-300 transform hover:scale-105"
+              >
                 Contacto
               </Button>
             </div>
 
+            {/* MENU HAMBURGUESA */}
             <div className="md:hidden">
-              <button onClick={() => setIsOpen(!isOpen)} className="text-white z-50 relative">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-white z-50 relative"
+              >
                 {isOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
@@ -78,7 +102,7 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* MENU MOBILE */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -89,9 +113,9 @@ const Navbar = () => {
             className="fixed inset-0 z-40 bg-[#0A100D]/95 backdrop-blur-lg md:hidden"
           >
             <motion.div
-              initial={{ y: "-100%" }}
+              initial={{ y: '-100%' }}
               animate={{ y: 0 }}
-              exit={{ y: "-100%" }}
+              exit={{ y: '-100%' }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col items-center justify-center h-full space-y-8"
             >
@@ -99,13 +123,20 @@ const Navbar = () => {
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  onClick={(e) => { e.preventDefault(); scrollToSection(item.id); }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.id);
+                  }}
                   className="text-3xl font-semibold text-gray-200 hover:text-white transition-colors"
                 >
                   {item.label}
                 </a>
               ))}
-              <Button onClick={() => scrollToSection('contacto')} size="lg" className="bg-[#0B4F3A] hover:bg-green-700 text-lg font-semibold px-8 py-4 mt-8 rounded-full">
+              <Button
+                onClick={() => scrollToSection('contacto')}
+                size="lg"
+                className="bg-[#0B4F3A] hover:bg-green-700 text-lg font-semibold px-8 py-4 mt-8 rounded-full"
+              >
                 Contacto
               </Button>
             </motion.div>
