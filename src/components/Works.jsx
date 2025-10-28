@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { Button } from './ui/button';
-import { Plus, Maximize2 } from 'lucide-react';
+import { Plus, Maximize2, Minus } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -90,7 +90,7 @@ const Works = () => {
                 onClick={() => setSelectedWork(work)}
               >
                 {work.mediaType === 'video' ? (
-                   <video className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out" autoPlay loop muted playsInline src={work.mediaUrl}></video>
+                  <video className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out" autoPlay loop muted playsInline src={work.mediaUrl}></video>
                 ) : (
                   <img className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out" alt={work.title} src={work.mediaUrl} />
                 )}
@@ -111,13 +111,13 @@ const Works = () => {
           </AnimatePresence>
         </motion.div>
         
-        {visibleCount < allWorks.length && (
-          <motion.div 
-            className="text-center mt-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
+        <motion.div 
+          className="text-center mt-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          {visibleCount < allWorks.length ? (
             <Button
               onClick={loadMore}
               size="lg"
@@ -126,8 +126,23 @@ const Works = () => {
               <Plus className="w-5 h-5 mr-2" />
               Mostrar más
             </Button>
-          </motion.div>
-        )}
+          ) : (
+            <Button
+              onClick={() => {
+                setVisibleCount(5);
+                const section = document.getElementById('trabajos');
+                if (section) {
+                  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              size="lg"
+              className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white font-semibold px-8 py-6 rounded-full transition-all duration-300 transform hover:scale-105"
+            >
+              <Minus className="w-5 h-5 mr-2" />
+              Mostrar menos
+            </Button>
+          )}
+        </motion.div>
       </div>
 
       <Dialog open={!!selectedWork} onOpenChange={() => setSelectedWork(null)}>
