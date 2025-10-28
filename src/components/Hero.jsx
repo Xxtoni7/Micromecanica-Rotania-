@@ -54,24 +54,24 @@ const Hero = () => {
 
       {/* Contenido */}
       <div className="relative z-20 h-full flex flex-col justify-center items-center text-center 
-                      px-4 sm:px-4 pt-[16vh] md:pt-[22vh] lg:pt-[20vh] pb-[10vh]">
+                      px-4 sm:px-4 pt-[12vh] md:pt-[22vh] lg:pt-[20vh] pb-[8vh]">
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Título principal */}
+          {/* Título */}
           <h1
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 tracking-tighter uppercase 
-                       max-w-[90%] mx-auto"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 tracking-tighter uppercase 
+                       max-w-[92%] mx-auto"
             style={{ textShadow: '0px 4px 15px rgba(0, 255, 135, 0.2)' }}
           >
             Micromecánica Rotania
           </h1>
 
           {/* Subtítulo */}
-          <p className="text-base sm:text-lg md:text-xl text-green-100/90 max-w-3xl mx-auto leading-relaxed font-light mb-12">
+          <p className="text-base sm:text-lg md:text-xl text-green-100/90 max-w-3xl mx-auto leading-relaxed font-light mb-10">
             Pioneros en instrumental automotor.{' '}
             <span className="font-semibold text-white">
               Reparación, diagnóstico y repuestos
@@ -81,7 +81,7 @@ const Hero = () => {
 
           {/* Features */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 justify-items-center mb-12 max-w-4xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 justify-items-center mb-10 max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -103,7 +103,7 @@ const Hero = () => {
 
           {/* Botones */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center mt-6 mb-24 sm:mb-20 w-full items-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center mt-4 mb-20 sm:mb-20 w-full items-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -134,14 +134,14 @@ const Hero = () => {
       </div>
 
       {/* Degradado inferior */}
-      <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-b from-transparent to-[#111C17] z-40"></div>
+      <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-b from-transparent to-[#111C17] z-40"></div>
 
-      {/* Flecha animada */}
+      {/* Flecha */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-40"
+        transition={{ delay: 1.1, duration: 1 }}
+        className="absolute bottom-2 sm:bottom-8 left-1/2 -translate-x-1/2 z-40"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
