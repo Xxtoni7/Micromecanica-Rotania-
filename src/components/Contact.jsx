@@ -62,7 +62,7 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Ponte en Contacto</h2>
-          <p className="text-lg text-gray-400">Estamos listos para ayudarte.</p>
+          <p className="text-lg text-gray-400">Consulta general, estamos listos para ayudarte.</p>
         </motion.div>
 
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
