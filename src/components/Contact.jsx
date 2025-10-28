@@ -11,25 +11,48 @@ import { useToast } from './ui/use-toast';
 const Contact = () => {
   const [ref, isInView] = useInView({ threshold: 0.2, once: true });
   const { toast } = useToast();
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: '', message: '' });
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    motive: '',
+    message: ''
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const { name, phone, motive, message } = formData;
+    const whatsappNumber = "5493425178440"; // Santa Fe
+
+    const text = `Nuevo mensaje desde el formulario del sitio web ` +
+      `Nombre: ${name} ` +
+      `Teléfono: ${phone} ` +
+      `Motivo: ${motive} ` +
+      `Mensaje: ${message}`;
+
+    const url = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(text)}`;
+
+    window.open(url, "_blank");
+
     toast({
-      title: "✅ ¡Mensaje enviado!",
-      description: "Nos pondremos en contacto contigo pronto.",
+      title: "✅ ¡Mensaje listo para enviar por WhatsApp!",
+      description: "Se abrirá WhatsApp para que confirmes el envío.",
       duration: 5000,
     });
-    setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+
+    setFormData({ name: '', email: '', phone: '', motive: '', message: '' });
   };
 
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
   };
-  
+
   return (
     <section id="contacto" className="py-32 bg-[#0E1612] relative">
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
@@ -44,49 +67,80 @@ const Contact = () => {
         </motion.div>
 
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-          <motion.div
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={itemVariants}
-          >
+
+          {/* FORM */}
+          <motion.div initial="hidden" animate={isInView ? "visible" : "hidden"} variants={itemVariants}>
             <form onSubmit={handleSubmit} className="space-y-6 bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10">
               <h3 className="text-2xl font-bold text-white mb-6">Envíanos tu consulta</h3>
+
               <div>
-                <Label htmlFor="name" className="text-white/80 mb-2 block font-semibold">Nombre</Label>
-                <Input id="name" name="name" value={formData.name} onChange={handleChange} required className="bg-white/5 border-white/20 text-white focus:border-green-400 h-12" placeholder="Tu nombre completo" />
+                <Label className="text-white/80 mb-2 block font-semibold">Nombre</Label>
+                <Input name="name" value={formData.name} onChange={handleChange} required
+                  className="bg-white/5 border-white/20 text-white h-12" placeholder="Tu nombre completo" />
               </div>
+
               <div>
-                <Label htmlFor="email" className="text-white/80 mb-2 block font-semibold">Email</Label>
-                <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required className="bg-white/5 border-white/20 text-white focus:border-green-400 h-12" placeholder="tu@email.com" />
+                <Label className="text-white/80 mb-2 block font-semibold">Teléfono</Label>
+                <Input name="phone" value={formData.phone} onChange={handleChange} required
+                  className="bg-white/5 border-white/20 text-white h-12" placeholder="11 2345-6789" />
               </div>
+
               <div>
-                <Label htmlFor="message" className="text-white/80 mb-2 block font-semibold">Mensaje</Label>
-                <Textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} className="bg-white/5 border-white/20 text-white focus:border-green-400" placeholder="Cuéntanos cómo podemos ayudarte..." />
+                <Label className="text-white/80 mb-2 block font-semibold">Motivo</Label>
+                <select
+                  name="motive"
+                  value={formData.motive}
+                  onChange={handleChange}
+                  required
+                  className="w-full h-12 bg-white/5 border border-white/20 text-white rounded-lg px-3 focus:border-green-400
+                  [&>option]:bg-[#0E1612] [&>option]:text-white"
+                >
+                  <option value="" disabled>Selecciona una opción</option>
+                  <option value="Consulta general">Consulta general</option>
+                  <option value="Proveedores">Proveedores</option>
+                  <option value="Post-venta">Post-venta</option>
+                </select>
               </div>
-              <Button type="submit" className="w-full bg-gradient-to-r from-[#0B4F3A] to-green-600 text-white font-bold text-lg py-7 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-green-500/30 transform hover:scale-105">
-                Enviar Consulta
+
+              <div>
+                <Label className="text-white/80 mb-2 block font-semibold">Mensaje</Label>
+                <Textarea name="message" value={formData.message} onChange={handleChange} required rows={5}
+                  className="bg-white/5 border-white/20 text-white focus:border-green-400"
+                  placeholder="Cuéntanos cómo podemos ayudarte..." />
+              </div>
+
+              <Button type="submit" className="w-full bg-gradient-to-r from-[#0B4F3A] to-green-600 text-white font-bold text-lg py-7 rounded-xl hover:scale-105">
+                Enviar por WhatsApp
               </Button>
             </form>
           </motion.div>
-          
-          <motion.div 
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={itemVariants}
-            transition={{ delay: 0.2 }}
-            className="space-y-8 mt-8 lg:mt-0"
-          >
+
+          {/* INFO CARD + MAP */}
+          <motion.div initial="hidden" animate={isInView ? "visible" : "hidden"} variants={itemVariants} transition={{ delay: 0.2 }} className="space-y-8 mt-8 lg:mt-0">
             <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10">
               <h3 className="text-xl font-bold text-white mb-6">Información y Redes</h3>
-              <div className="space-y-6">
-                <InfoItem icon={<MapPin />} title="Dirección" text="Buenos Aires, Argentina" />
-                <InfoItem icon={<Clock />} title="Horarios" text="L-V: 9-18hs, S: 9-13hs" />
-                <InfoItem icon={<MessageCircle />} title="WhatsApp" text="+54 9 11 1234-5678" link="https://wa.me/5491112345678" />
-                <InfoItem icon={<Instagram />} title="Instagram" text="@micromecanica.rotania" link="https://instagram.com/micromecanica.rotania" />
+              <div className="space-y-4">
+
+                <InfoItem icon={<MapPin />} title="Dirección" text="1º de Mayo 4638, Santa Fe"
+                  link="https://www.google.com/maps/place/Micromec%C3%A1nica+Rotania/@-31.6243083,-60.7039832,17z/data=!4m6!3m5!1s0x95b5a9dcb36d05b1:0x2feb64ad65cd89f9!8m2!3d-31.624358!4d-60.7037496!16s%2Fg%2F1tdzs9s6?entry=ttu&g_ep=EgoyMDI1MTAyNi4wIKXMDSoASAFQAw%3D%3D" />
+
+                <InfoItem icon={<Clock />} title="Horarios" text="Lunes-Viernes: 9-12hs / 13:30-17hs" />
+
+                <InfoItem icon={<MessageCircle />} title="WhatsApp" text="+54 9 342 517-8440"
+                  link="https://wa.me/5493425178440" />
+
+                <InfoItem icon={<Instagram />} title="Instagram" text="Rotania Micromecanica SRL"
+                  link="https://instagram.com/micromecanicarotaniasrl" />
+
               </div>
             </div>
+
             <div className="rounded-3xl overflow-hidden border border-white/10 h-64">
-              <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-58.4173%2C-34.6037%2C-58.3673%2C-34.5837&layer=mapnik&marker=-34.5937,-58.3923" width="100%" height="100%" className="grayscale invert" style={{ border: 0 }} loading="lazy" title="Ubicación Micromecánica Rotania SRL"></iframe>
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-60.7063%2C-31.6243%2C-60.7037%2C-31.6237&layer=mapnik&marker=-31.6243,-60.7053"
+                width="100%" height="100%" className="grayscale invert" style={{ border: 0 }} loading="lazy"
+                title="Ubicación Micromecánica Rotania SRL"
+              ></iframe>
             </div>
           </motion.div>
         </div>
@@ -109,20 +163,19 @@ const InfoItem = ({ icon, title, text, link }) => {
       </div>
       <div className="flex flex-col justify-center leading-tight">
         <p className="text-white font-semibold">{title}</p>
-        <p className="text-gray-400 group-hover:text-white transition-colors">
-          {text}
-        </p>
+        <p className="text-gray-400 group-hover:text-white transition-colors">{text}</p>
       </div>
     </div>
   );
 
   if (link) {
     return (
-      <a href={link} target="_blank" rel="noopener noreferrer">
+      <a href={link} target="_blank" rel="noopener noreferrer" className="block">
         {content}
       </a>
     );
   }
+
   return content;
 };
 
