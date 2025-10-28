@@ -53,8 +53,8 @@ const Hero = () => {
       </div>
 
       {/* Contenido */}
-      <div className="relative z-20 h-full flex flex-col justify-center items-center text-center px-6 sm:px-4 pt-[20vh] md:pt-[22vh] lg:pt-[20vh] pb-[12vh]">
-
+      <div className="relative z-20 h-full flex flex-col justify-center items-center text-center 
+                      px-4 sm:px-4 pt-[16vh] md:pt-[22vh] lg:pt-[20vh] pb-[10vh]">
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -63,7 +63,8 @@ const Hero = () => {
         >
           {/* Título principal */}
           <h1
-            className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-10 tracking-tighter uppercase"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 tracking-tighter uppercase 
+                       max-w-[90%] mx-auto"
             style={{ textShadow: '0px 4px 15px rgba(0, 255, 135, 0.2)' }}
           >
             Micromecánica Rotania
@@ -102,7 +103,7 @@ const Hero = () => {
 
           {/* Botones */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-5 justify-center mt-6 mb-24 sm:mb-20"
+            className="flex flex-col sm:flex-row gap-4 justify-center mt-6 mb-24 sm:mb-20 w-full items-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -110,18 +111,20 @@ const Hero = () => {
             <Button
               onClick={() => scrollToSection('servicios')}
               size="lg"
-              className="bg-gradient-to-r from-[#0B4F3A] to-green-600 text-white hover:from-green-600 hover:to-green-700 
-                         font-bold text-lg px-8 py-6 rounded-full shadow-lg shadow-green-500/20 transition-all duration-300 
-                         transform hover:scale-105"
+              className="bg-gradient-to-r from-[#0B4F3A] to-green-600 text-white font-bold text-lg 
+                        px-6 py-5 rounded-full shadow-lg shadow-green-500/20 transition-all duration-300 
+                        hover:scale-105 w-[85%] max-w-[320px] sm:w-auto sm:max-w-none"
             >
               Ver Servicios
             </Button>
+
             <Button
               onClick={showNotImplementedToast}
               size="lg"
               variant="outline"
-              className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-[#0B4F3A] 
-                         font-bold text-lg px-8 py-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+              className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-lg 
+                        px-6 py-5 rounded-full shadow-lg transition-all duration-300 hover:scale-105 
+                        w-[85%] max-w-[320px] sm:w-auto sm:max-w-none"
             >
               <PlayCircle className="w-6 h-6 mr-2" />
               Ver Taller
@@ -137,14 +140,14 @@ const Hero = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40"
+        transition={{ delay: 1.2, duration: 1 }}
+        className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-40"
       >
         <motion.div
-          animate={{ y: [0, 12, 0] }}
-          transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
         >
-          <ChevronDown className="w-10 h-10 text-white/50" />
+          <ChevronDown className="w-8 h-8 sm:w-10 sm:h-10 text-white/60" />
         </motion.div>
       </motion.div>
     </section>
