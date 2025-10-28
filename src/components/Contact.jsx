@@ -14,7 +14,6 @@ const Contact = () => {
 
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     phone: '',
     motive: '',
     message: ''
@@ -24,7 +23,7 @@ const Contact = () => {
     e.preventDefault();
 
     const { name, phone, motive, message } = formData;
-    const whatsappNumber = "5493425178440"; // Santa Fe
+    const whatsappNumber = "5493425178440";
 
     const text = `Nuevo mensaje desde el formulario del sitio web ` +
       `Nombre: ${name} ` +
