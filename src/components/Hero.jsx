@@ -17,7 +17,7 @@ const Hero = () => {
   const showNotImplementedToast = () => {
     toast({
       title: '🚧 ¡Próximamente!',
-      description: "Esta función de video aún no está implementada. ¡Puedes solicitarla en tu próximo mensaje! 🚀",
+      description: "Esta función de video aún no está implementada. ¡Puedes solicitarla en tu próximo mensaje!",
       duration: 3000,
     });
   };
@@ -25,7 +25,7 @@ const Hero = () => {
   const features = [
     {
       icon: <Award className="w-6 h-6 sm:w-8 sm:h-8 text-green-300 drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]" />,
-      title: '+30 años de experiencia',
+      title: '+50 años de experiencia',
     },
     {
       icon: <Wrench className="w-6 h-6 sm:w-8 sm:h-8 text-green-300 drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]" />,
