@@ -7,6 +7,8 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { useToast } from './ui/use-toast';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const Contact = () => {
   const [ref, isInView] = useInView({ threshold: 0.2, once: true });
@@ -109,7 +111,7 @@ const Contact = () => {
               </div>
 
               <Button type="submit" className="w-full bg-gradient-to-r from-[#0B4F3A] to-green-600 text-white font-bold text-lg py-7 rounded-xl hover:scale-105">
-                Enviar por WhatsApp
+                Enviar
               </Button>
             </form>
           </motion.div>
@@ -155,10 +157,16 @@ const Contact = () => {
 };
 
 const InfoItem = ({ icon, title, text, link }) => {
+  // Cambiar el ícono de WhatsApp automáticamente
+  const isWhatsApp = title === "WhatsApp";
+  const displayIcon = isWhatsApp
+    ? <FontAwesomeIcon icon={faWhatsapp} className="w-6 h-6 text-green-300" />
+    : React.cloneElement(icon, { className: "w-6 h-6 text-green-300" });
+
   const content = (
     <div className="flex items-center gap-5 group py-2">
       <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center flex-shrink-0 border border-white/10 group-hover:bg-green-500/20 group-hover:border-green-500/50 transition-all">
-        {React.cloneElement(icon, { className: "w-6 h-6 text-green-300" })}
+        {displayIcon}
       </div>
       <div className="flex flex-col justify-center leading-tight">
         <p className="text-white font-semibold">{title}</p>

@@ -6,14 +6,27 @@ import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import { Label } from "../components/ui/label";
 import { useToast } from "../components/ui/use-toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const ServicioTaller = () => {
     const { toast } = useToast();
-    
-    //Scroll siempre al inicio
+    const navigate = useNavigate();
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    const handleBackToServices = () => {
+        navigate("/#servicios");
+        setTimeout(() => {
+        const section = document.getElementById("servicios");
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+        }, 150);
+    };
 
     const [formData, setFormData] = useState({
         name: "",
@@ -50,9 +63,11 @@ const ServicioTaller = () => {
 
     return (
         <section className="bg-[#0E1612] text-white min-h-screen pt-8 sm:pt-8 md:pt-8 lg:pt-8 pb-28 px-6">
+
+        {/* ✅ Botón Volver alineado correctamente */}
         <div className="mb-10">
             <Button
-            onClick={() => window.history.back()}
+            onClick={handleBackToServices}
             className="bg-white/10 border border-white/20 text-white hover:bg-white hover:text-[#0B4F3A] px-4 py-2 rounded-xl"
             >
             <ArrowLeft className="w-5 h-5 mr-2" />
@@ -119,17 +134,18 @@ const ServicioTaller = () => {
 
             <Button type="submit"
                 className="w-full bg-green-600 hover:bg-green-700 font-bold text-lg py-6 rounded-xl flex items-center justify-center">
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Enviar por WhatsApp
+                Enviar
             </Button>
             </form>
         </div>
+
+        {/* Floating WhatsApp mobile */}
         <a
             href="https://wa.me/5493425178440"
             className="fixed bottom-6 right-6 bg-green-600 rounded-full p-4 shadow-xl hover:scale-110 transition sm:hidden"
             target="_blank"
         >
-            <MessageCircle className="w-7 h-7 text-white" />
+            <FontAwesomeIcon icon={faWhatsapp} className="w-7 h-7 text-white" />
         </a>
 
         </section>
