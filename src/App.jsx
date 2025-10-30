@@ -11,11 +11,11 @@ import { Toaster } from './components/ui/toaster';
 import { Routes, Route, useLocation } from "react-router-dom";
 import ServicioTaller from "./pages/ServicioTaller";
 import Repuestos from "./pages/Repuestos";
-//import LowCars from "./pages/LowCars"; // si ya lo creaste
+import LowCars from "./pages/LowsCars"; 
 
 function App() {
   const location = useLocation();
-  const hideNavbarRoutes = ["/servicio-taller", "/repuestos", /*"/lowcars",*/ ];
+  const hideNavbarRoutes = ["/servicio-taller", "/repuestos", "/lowcars" ];
   const hideNavbar = hideNavbarRoutes.includes(location.pathname);
 
   return (
@@ -54,7 +54,7 @@ function App() {
           {/* Páginas internas */}
           <Route path="/servicio-taller" element={<ServicioTaller/>} />         
           <Route path="/repuestos" element={<Repuestos/>} />
-          {/* Páginas internas <Route path="/lowcars" element={<LowCars />} /> */}
+          <Route path="/lowcars" element={<LowCars />} />
         </Routes>
       </main>
 
