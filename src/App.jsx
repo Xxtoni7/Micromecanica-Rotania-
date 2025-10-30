@@ -10,14 +10,12 @@ import Navbar from './components/Navbar';
 import { Toaster } from './components/ui/toaster';
 import { Routes, Route, useLocation } from "react-router-dom";
 import ServicioTaller from "./pages/ServicioTaller";
+import Repuestos from "./pages/Repuestos";
 //import LowCars from "./pages/LowCars"; // si ya lo creaste
-//import Repuestos from "./pages/Repuestos"; // si ya lo creaste
 
 function App() {
   const location = useLocation();
-
-
-  const hideNavbarRoutes = ["/servicio-taller" /*"/lowcars", "/repuestos"*/];
+  const hideNavbarRoutes = ["/servicio-taller", "/repuestos", /*"/lowcars",*/ ];
   const hideNavbar = hideNavbarRoutes.includes(location.pathname);
 
   return (
@@ -31,12 +29,13 @@ function App() {
       {!hideNavbar && <Navbar />}
 
       <main
-  className={`text-white font-poppins ${
-    hideNavbar
-      ? "min-h-[100vh]" // ✅ ocupa solo la pantalla sin reservar hueco
-      : "min-h-screen"  // ✅ home mantiene su diseño con navbar
-  }`}
->
+        className={`text-white font-poppins ${
+          hideNavbar
+          ? "min-h-[100vh]" // ocupa solo la pantalla sin reservar hueco
+          : "min-h-screen"  // home mantiene su diseño con navbar
+          }`
+        }
+      >
         <Routes>
           <Route
             path="/"
@@ -53,9 +52,8 @@ function App() {
           />
           
           {/* Páginas internas */}
-          <Route path="/servicio-taller" element={<ServicioTaller />} />
-          
-          {/*<Route path="/repuestos" element={<Repuestos />} /> */}
+          <Route path="/servicio-taller" element={<ServicioTaller/>} />         
+          <Route path="/repuestos" element={<Repuestos/>} />
           {/* Páginas internas <Route path="/lowcars" element={<LowCars />} /> */}
         </Routes>
       </main>

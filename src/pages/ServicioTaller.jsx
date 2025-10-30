@@ -64,7 +64,7 @@ const ServicioTaller = () => {
     return (
         <section className="bg-[#0E1612] text-white min-h-screen pt-8 sm:pt-8 md:pt-8 lg:pt-8 pb-28 px-6">
 
-        {/* ✅ Botón Volver alineado correctamente */}
+        {/* Botón Volver alineado correctamente */}
         <div className="mb-10">
             <Button
             onClick={handleBackToServices}
