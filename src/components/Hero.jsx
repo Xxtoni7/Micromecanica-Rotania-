@@ -16,7 +16,7 @@ const Hero = () => {
 
   const showNotImplementedToast = () => {
     toast({
-      title: '🚧 ¡Próximamente!',
+      title: '¡Próximamente!',
       description: "Esta función de video aún no está implementada. ¡Puedes solicitarla en tu próximo mensaje!",
       duration: 3000,
     });
