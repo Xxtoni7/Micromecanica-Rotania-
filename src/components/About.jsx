@@ -51,7 +51,7 @@ const About = () => {
               Evolucionamos para ofrecerte <span className="text-green-400">el mejor servicio.</span>
             </motion.h2>
             <motion.p variants={itemVariants} className="text-lg text-gray-300 mb-8 leading-relaxed">
-              Desde hace décadas, en Micromecánica Rotania SRL nos especializamos en la reparación de instrumental automotor y en una cobertura integral de sistemas. Incorporamos tecnología de diagnóstico avanzada para garantizar la máxima precisión en cada trabajo.
+              Somos una empresa líder en electromecánica del automotor, especializada en el diagnóstico, mantenimiento y reparación de vehículos. Ofrecemos un servicio integral con tecnología avanzada y un equipo de profesionales comprometidos con la calidad, la eficiencia y la satisfacción de nuestros clientes. Además, contamos con un sector exclusivo de venta de repuestos, garantizando soluciones completas y confiables para cada necesidad automotriz. 
             </motion.p>
             <motion.div variants={itemVariants} className="space-y-6">
               {features.map((feature, index) => (
