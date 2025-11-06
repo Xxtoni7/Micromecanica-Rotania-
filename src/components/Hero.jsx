@@ -53,7 +53,7 @@ const Hero = () => {
       </div>
 
       {/* Contenido */}
-      <div className="relative z-20 h-full flex flex-col justify-center items-center text-center px-4 sm:px-4 pt-[8vh] md:pt-[18vh] lg:pt-[16vh] pb-[8vh]">
+      <div className="relative z-20 min-h-[100dvh] flex flex-col justify-center items-center text-center px-4 sm:px-4 pt-[8vh] pb-[8vh] sm:pt-[4vh] sm:pb-[4vh] md:pt-[18vh] lg:pt-[16vh]">
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
