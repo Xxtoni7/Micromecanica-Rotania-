@@ -25,7 +25,7 @@ const Hero = () => {
   const features = [
     {
       icon: <Award className="w-6 h-6 sm:w-8 sm:h-8 text-green-300 drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]" />,
-      title: '+50 años de experiencia',
+      title: '+60 años de experiencia',
     },
     {
       icon: <Wrench className="w-6 h-6 sm:w-8 sm:h-8 text-green-300 drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]" />,
@@ -53,35 +53,34 @@ const Hero = () => {
       </div>
 
       {/* Contenido */}
-      <div className="relative z-20 h-full flex flex-col justify-center items-center text-center 
-                      px-4 sm:px-4 pt-[12vh] md:pt-[22vh] lg:pt-[20vh] pb-[8vh]">
+      <div className="relative z-20 h-full flex flex-col justify-center items-center text-center px-4 sm:px-4 pt-[8vh] md:pt-[18vh] lg:pt-[16vh] pb-[8vh]">
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Título */}
+          <div className="flex justify-center my-6">
+            <img
+              src="/Logo/logo.jpg"
+              alt="Logo Micromecánica Rotania"
+              className="w-44 h-44 object-cover rounded-full border-2 border-[#0B4F3A] shadow-[0_0_25px_4px_rgba(11,79,58,0.6)] 
+              hover:scale-105 transition-transform duration-300"
+              style={{ filter: "drop-shadow(0 0 35px rgba(34,197,94,0.6))" }}
+
+            />
+          </div>
+
           <h1
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 tracking-tighter uppercase 
-                       max-w-[92%] mx-auto"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-4xl font-bold mb-16 tracking-tighter max-w-[100%] mx-auto"
             style={{ textShadow: '0px 4px 15px rgba(0, 255, 135, 0.2)' }}
           >
-            Micromecánica Rotania
+            Micromecánica Rotania SRL
           </h1>
-
-          {/* Subtítulo */}
-          <p className="text-base sm:text-lg md:text-xl text-green-100/90 max-w-3xl mx-auto leading-relaxed font-light mb-10">
-            Pioneros en instrumental automotor.{' '}
-            <span className="font-semibold text-white">
-              Reparación, diagnóstico y repuestos
-            </span>{' '}
-            con garantía.
-          </p>
 
           {/* Features */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 justify-items-center mb-10 max-w-4xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 justify-items-center mb-16 max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -89,9 +88,9 @@ const Hero = () => {
             {features.map((feature, i) => (
               <div
                 key={i}
-                className="flex sm:flex-col items-center justify-center gap-2 sm:gap-3 bg-white/5 backdrop-blur-sm 
-                           rounded-xl px-5 py-4 sm:px-6 sm:py-5 border border-white/10 hover:border-green-400/30 
-                           transition duration-300 w-full sm:w-auto text-center max-w-[85%] sm:max-w-none"
+                className="flex sm:flex-col items-center justify-center gap-2 sm:gap-3 bg-white/5 
+                          backdrop-blur-sm rounded-xl px-5 py-4 sm:px-6 sm:py-5 border border-white/10 
+                          hover:border-green-400/30 transition duration-300 w-[85%] sm:w-[280px] mx-auto text-center"
               >
                 {feature.icon}
                 <p className="text-sm sm:text-base text-white font-medium leading-tight">
@@ -103,7 +102,7 @@ const Hero = () => {
 
           {/* Botones */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center mt-4 mb-20 sm:mb-20 w-full items-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center mt-4 mb-15 sm:mb-20 w-full items-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -141,7 +140,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.1, duration: 1 }}
-        className="absolute bottom-4 sm:bottom-10 lg:bottom-16 left-1/2 -translate-x-1/2 z-40"
+        className="absolute bottom-4 sm:bottom-10 lg:bottom-19 left-1/2 -translate-x-1/2 z-40"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
