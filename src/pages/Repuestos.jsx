@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Package, Battery, Zap, Lightbulb, ArrowLeft } from "lucide-react";
+import { Zap, Lightbulb, ArrowLeft, Cog, Cable, Fan, Boxes } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
@@ -14,15 +14,12 @@ const Repuestos = () => {
     const { toast } = useToast();
     const navigate = useNavigate();
 
-    // Siempre entrar arriba del todo
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    // Volver al HOME → sección #servicios
     const handleBack = () => {
         navigate("/");
-        // Esperar a que se monte Home y scrollear a #servicios
         setTimeout(() => {
         const el = document.getElementById("servicios");
         if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -74,11 +71,14 @@ const Repuestos = () => {
     };
 
     const categories = [
-        { icon: Package, label: "Alternadores" },
-        { icon: Battery, label: "Bomba de combustible" },
-        { icon: Zap, label: "Sensores / electrónica" },
-        { icon: Lightbulb, label: "Iluminación LED / Xenón" },
+    { icon: Cog, label: "Alternadores" }, 
+    { icon: Zap, label: "Motor de Arranque" }, 
+    { icon: Cable, label: "Fichas y Sensores" }, 
+    { icon: Lightbulb, label: "Faros e Iluminación" }, 
+    { icon: Fan, label: "Electroventiladores" }, 
+    { icon: Boxes, label: "Repuestos originales y alternativos" }, 
     ];
+    
 
     return (
         <section className="bg-[#0E1612] text-white min-h-screen pt-8 sm:pt-8 md:pt-8 lg:pt-8 pb-28 px-6">
@@ -103,12 +103,12 @@ const Repuestos = () => {
                 Venta de Repuestos
             </h1>
             <p className="text-gray-400 max-w-2xl mx-auto">
-                Repuestos originales y garantizados para un rendimiento confiable.
+                Amplia variedad de repuestos relacionados con la electromecánica automotriz.
             </p>
         </motion.div>
 
         {/* Categorías */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-20">
             {categories.map((c, i) => (
                 <motion.div
                     key={c.label}
@@ -126,7 +126,7 @@ const Repuestos = () => {
         {/* Formulario */}
         <div className="max-w-xl mx-auto bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-md">
             <h3 className="text-2xl font-bold mb-8 text-center">
-            Consultá de repuesto
+            Realizá tu Consulta
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -211,7 +211,6 @@ const Repuestos = () => {
             </form>
         </div>
 
-        {/*WhatsApp en móvil */}
         <a
             href="https://wa.me/5493425415159"
             className="fixed bottom-6 right-6 bg-green-600 rounded-full p-4 shadow-xl hover:scale-110 transition sm:hidden"
