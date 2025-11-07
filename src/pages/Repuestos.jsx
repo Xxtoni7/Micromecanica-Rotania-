@@ -79,6 +79,7 @@ const Repuestos = () => {
         { icon: Boxes, label: "Repuestos originales y alternativos" },
     ];
 
+
     return (
         <section className="bg-[#0E1612] text-white min-h-screen pt-8 sm:pt-8 pb-28 px-6 overflow-hidden">
         {/* Botón Volver */}
