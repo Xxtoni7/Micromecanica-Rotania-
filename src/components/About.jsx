@@ -5,9 +5,10 @@ import { Compass, Users, Settings } from 'lucide-react';
 
 const About = () => {
 
+
   const [ref, isInView] = useInView({
-    threshold: typeof window !== "undefined" && window.innerWidth < 768 ? 0.2 : 0.3,
-    rootMargin: typeof window !== "undefined" && window.innerWidth < 768 ? "50px" : "0px",
+    threshold: 0.15, 
+    rootMargin: "0px 0px -10% 0px", 
     once: true,
   });
 
@@ -76,7 +77,11 @@ const About = () => {
               variants={itemVariants}
               className="text-lg text-gray-300 mb-8 leading-relaxed"
             >
-              Somos una empresa líder en electromecánica del automotor, especializada en el diagnóstico, mantenimiento y reparación de vehículos. Ofrecemos un servicio integral con tecnología avanzada y un equipo de profesionales comprometidos con la calidad, la eficiencia y la satisfacción de nuestros clientes. Además, contamos con un sector exclusivo de venta de repuestos, garantizando soluciones completas y confiables para cada necesidad automotriz.
+              Somos una empresa líder en electromecánica del automotor, especializada en el diagnóstico,
+              mantenimiento y reparación de vehículos. Ofrecemos un servicio integral con tecnología avanzada
+              y un equipo de profesionales comprometidos con la calidad, la eficiencia y la satisfacción de
+              nuestros clientes. Además, contamos con un sector exclusivo de venta de repuestos, garantizando
+              soluciones completas y confiables para cada necesidad automotriz.
             </motion.p>
 
             <motion.div variants={itemVariants} className="space-y-6">
