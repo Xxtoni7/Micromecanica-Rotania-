@@ -115,7 +115,7 @@ const About = () => {
                 clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)',
               }}
               alt="Mecánico trabajando en un motor con herramientas avanzadas"
-              src="/imagenes/img2.jpg"
+              src="/imagenes/imgAbout.jpg"
             />
           </motion.div>
         </div>

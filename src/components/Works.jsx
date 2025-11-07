@@ -3,36 +3,30 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { Button } from './ui/button';
 import { Plus, Maximize2, Minus } from 'lucide-react';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "./ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,} from "./ui/dialog";
 
 const allWorks = [
   {
     id: 1, title: 'Reparación de A/C', category: 'Aire Acondicionado', 
-    mediaUrl: 'https://videos.pexels.com/video-files/8094132/8094132-hd_1920_1080_25fps.mp4', mediaType: 'video',
+    mediaUrl: '/imagenes/trabajos/trabajo4.jpg', mediaType: 'image',
     description: 'Diagnóstico completo y reparación de sistema de climatización con recarga de gas.',
     layout: "lg:col-span-2 lg:row-span-2"
   },
   {
     id: 2, title: 'Conversión LED', category: 'Iluminación', 
-    mediaUrl: 'https://images.unsplash.com/photo-1634839526458-8ae8e2cc6b44', mediaType: 'image',
+    mediaUrl: '/imagenes/trabajos/trabajo2.jpg', mediaType: 'image',
     description: 'Instalación de sistema de iluminación LED de alta eficiencia para mejor visibilidad.',
     layout: ""
   },
   {
     id: 3, title: 'Restauración Instrumental', category: 'Instrumental', 
-    mediaUrl: 'https://images.unsplash.com/photo-1595872018818-97555653a011', mediaType: 'image',
+    mediaUrl: '/imagenes/trabajos/trabajo3.jpg', mediaType: 'image',
     description: 'Reparación y calibración de tablero de instrumentos digitales con componentes nuevos.',
     layout: ""
   },
   {
     id: 4, title: 'Pulido y Corrección', category: 'Estética', 
-    mediaUrl: 'https://videos.pexels.com/video-files/4491538/4491538-hd_1920_1080_25fps.mp4', mediaType: 'video',
+    mediaUrl: '/imagenes/trabajos/trabajo1.jpg', mediaType: 'image',
     description: 'Tratamiento profesional de carrocería con pulido y protección cerámica.',
     layout: ""
   },
