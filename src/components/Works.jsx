@@ -72,7 +72,7 @@ const Works = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Trabajos Destacados
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">Calidad y precisión en cada proyecto que realizamos.</p>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">Calidad y precisión en cada trabajo que realizamos.</p>
         </motion.div>
 
         <motion.div 
