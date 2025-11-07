@@ -53,7 +53,8 @@ const Hero = () => {
       </div>
 
       {/* Contenido */}
-      <div className="relative z-20 min-h-[100dvh] flex flex-col justify-center items-center text-center px-4 sm:px-4 pt-[8vh] pb-[8vh] sm:pt-[4vh] sm:pb-[4vh] md:pt-[18vh] lg:pt-[16vh]">
+      <div className="relative z-20 min-h-[100svh] flex flex-col justify-center items-center text-center 
+                px-3 sm:px-4 pt-[7vh] pb-[10vh] sm:pt-[4vh] sm:pb-[4vh] md:pt-[18vh] lg:pt-[16vh]">
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -64,10 +65,9 @@ const Hero = () => {
             <img
               src="/Logo/logo.jpg"
               alt="Logo Micromecánica Rotania"
-              className="w-44 h-44 object-cover rounded-full border-2 border-[#0B4F3A] shadow-[0_0_25px_4px_rgba(11,79,58,0.6)] 
-              hover:scale-105 transition-transform duration-300"
+              className="w-32 h-32 sm:w-44 sm:h-44 object-cover rounded-full border-2 border-[#0B4F3A] 
+              shadow-[0_0_25px_4px_rgba(11,79,58,0.6)] hover:scale-105 transition-transform duration-300"
               style={{ filter: "drop-shadow(0 0 35px rgba(34,197,94,0.6))" }}
-
             />
           </div>
 
