@@ -3,28 +3,29 @@ import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { Wrench, Sparkles, Package, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
-import { Link } from 'react-router-dom'; // ✅ Necesario para navegación interna
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const [ref, isInView] = useInView({ threshold: 0.2, once: true });
+  {/* TODDO: agregar tildes mejora de texto */}  
 
   const services = [
     {
       icon: Wrench,
       title: 'Servicio de Taller',
-      description: 'Diagnóstico y reparación de instrumental, aire acondicionado, alternadores, y más.',
+      description: 'Reparación de instrumental, aire acondicionado, electromecánica y más.',
       link: '/servicio-taller'
     },
     {
       icon: Package,
       title: 'Venta de Repuestos',
-      description: 'Sensores, bombas de combustible y sistemas de iluminación LED/Xenón originales.',
+      description: 'Sensores, motores de arranque, alternadores, electroventiladores, iluminación y más.',
       link: '/repuestos'
     },
     {
       icon: Sparkles,
       title: 'Estética Automotriz',
-      description: 'Pulido, corrección de pintura, tratamiento de ópticas y protección cerámica.',
+      description: 'Tratamiento de ópticas, corrección y pulido vehicular, tratamientos cerámicos y PPF.',
       link: '/lowcars'
     }
   ];
@@ -52,10 +53,10 @@ const Services = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Servicios Integrales
+            ¿Que ofrecemos?
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Tecnología y experiencia para cuidar cada detalle de tu vehículo.
+            Servicios integrales de la más alta calidad.
           </p>
         </motion.div>
 
