@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Wrench, Gauge, Fan, Zap, MessageCircle, ArrowLeft } from "lucide-react";
+import { Wrench, Gauge, Fan, Zap, ArrowLeft } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
@@ -57,14 +57,13 @@ const ServicioTaller = () => {
     const features = [
         { icon: Gauge, title: "Tableros digitales" },
         { icon: Fan, title: "Aire acondicionado" },
-        { icon: Zap, title: "Sistema eléctrico" },
+        { icon: Zap, title: "Reparaciones" },
         { icon: Wrench, title: "Instrumental y sensores" },
     ];
 
     return (
         <section className="bg-[#0E1612] text-white min-h-screen pt-8 sm:pt-8 md:pt-8 lg:pt-8 pb-28 px-6">
 
-        {/* Botón Volver alineado correctamente */}
         <div className="mb-10">
             <Button
             onClick={handleBackToServices}
@@ -86,7 +85,7 @@ const ServicioTaller = () => {
             Servicio de Taller
             </h1>
             <p className="text-gray-400 max-w-2xl mx-auto">
-            Especialistas en diagnóstico y reparación electrónica automotriz.
+            Especialistas en electromecánica y reparación.
             </p>
         </motion.div>
 
@@ -139,7 +138,6 @@ const ServicioTaller = () => {
             </form>
         </div>
 
-        {/* Floating WhatsApp mobile */}
         <a
             href="https://wa.me/5493425178440"
             className="fixed bottom-6 right-6 bg-green-600 rounded-full p-4 shadow-xl hover:scale-110 transition sm:hidden"
