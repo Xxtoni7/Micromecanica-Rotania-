@@ -55,7 +55,7 @@ const Repuestos = () => {
         window.open(url, "_blank");
 
         toast({
-        title: " ¡Consulta enviada a Repuestos!",
+        title: "¡Consulta enviada a Repuestos!",
         description: "Te responderemos a la brevedad.",
         duration: 4000,
         });
@@ -71,24 +71,24 @@ const Repuestos = () => {
     };
 
     const categories = [
-    { icon: Cog, label: "Alternadores" }, 
-    { icon: Zap, label: "Motor de Arranque" }, 
-    { icon: Cable, label: "Fichas y Sensores" }, 
-    { icon: Lightbulb, label: "Faros e Iluminación" }, 
-    { icon: Fan, label: "Electroventiladores" }, 
-    { icon: Boxes, label: "Repuestos originales y alternativos" }, 
+        { icon: Cog, label: "Alternadores" },
+        { icon: Zap, label: "Motor de Arranque" },
+        { icon: Cable, label: "Fichas y Sensores" },
+        { icon: Lightbulb, label: "Faros e Iluminación" },
+        { icon: Fan, label: "Electroventiladores" },
+        { icon: Boxes, label: "Repuestos originales y alternativos" },
     ];
-    
 
     return (
-        <section className="bg-[#0E1612] text-white min-h-screen pt-8 sm:pt-8 md:pt-8 lg:pt-8 pb-28 px-6">
+        <section className="bg-[#0E1612] text-white min-h-screen pt-8 sm:pt-8 pb-28 px-6 overflow-hidden">
+        {/* Botón Volver */}
         <div className="mb-6 md:mb-8 lg:mb-10">
             <Button
             onClick={handleBack}
             className="bg-white/10 border border-white/20 text-white hover:bg-white hover:text-[#0B4F3A] px-4 py-2 rounded-xl"
             >
-                <ArrowLeft className="w-5 h-5 mr-2" />
-                Volver
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Volver
             </Button>
         </div>
 
@@ -100,34 +100,56 @@ const Repuestos = () => {
             className="text-center mb-16"
         >
             <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
-                Venta de Repuestos
+            Venta de Repuestos
             </h1>
             <p className="text-gray-400 max-w-2xl mx-auto">
-                Amplia variedad de repuestos relacionados con la electromecánica automotriz.
+            Amplia variedad de repuestos relacionados con la electromecánica automotriz.
             </p>
         </motion.div>
 
-        {/* Categorías */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-20">
+        <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0.6, 1, 0.6] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            className="text-sm text-gray-400 mb-3 text-center sm:hidden"
+        >
+            Deslizá para ver más →
+        </motion.p>
+
+        <div
+            className="flex overflow-x-auto gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 
+                    max-w-5xl mx-auto mb-20 snap-x snap-mandatory sm:overflow-visible px-2 sm:px-0 pb-3 sm:pb-0"
+        >
             {categories.map((c, i) => (
-                <motion.div
-                    key={c.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="bg-white/5 p-6 rounded-2xl text-center border border-white/10 hover:border-green-500/40 transition"
-                >
-                    <c.icon className="w-10 h-10 text-green-400 mx-auto mb-3" />
-                    <p className="font-semibold">{c.label}</p>
-                </motion.div>
+            <motion.div
+                key={c.label}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: i * 0.1, duration: 0.6 }}
+                whileHover={{ scale: 1.05, rotateY: 3 }}
+                className="flex-shrink-0 w-64 sm:w-auto snap-center bg-white/5 backdrop-blur-sm p-6 
+                        rounded-2xl text-center border border-white/10 hover:border-green-400/50 
+                        transition relative overflow-hidden group shadow-[0_0_10px_rgba(0,0,0,0.3)]"
+            >
+            <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+            <motion.div
+                className="relative z-10 flex flex-col items-center justify-center h-full"
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+            >
+                <div className="flex flex-col items-center justify-center gap-2">
+                    <c.icon className="w-10 h-10 text-green-400 drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]" />
+                    <p className="font-semibold leading-tight text-center">{c.label}</p>
+                </div>
+            </motion.div>
+
+            </motion.div>
             ))}
         </div>
 
         {/* Formulario */}
         <div className="max-w-xl mx-auto bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-md">
-            <h3 className="text-2xl font-bold mb-8 text-center">
-            Realizá tu Consulta
-            </h3>
+            <h3 className="text-2xl font-bold mb-8 text-center">Realizá tu Consulta</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
             <div>
