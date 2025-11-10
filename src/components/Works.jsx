@@ -4,54 +4,110 @@ import { useInView } from '../hooks/useInView';
 import { Button } from './ui/button';
 import { Plus, Maximize2, Minus } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,} from "./ui/dialog";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 
 const allWorks = [
   {
-    id: 1, title: 'Reparación de A/C', category: 'Aire Acondicionado', 
-    mediaUrl: '/imagenes/trabajos/trabajo4.jpg', mediaType: 'image',
-    description: 'Diagnóstico completo y reparación de sistema de climatización con recarga de gas.',
+    id: 1, title: 'Chequeo de presión y reinstalación eléctrica', category: 'Sistema Eléctrico y Presión', 
+    mediaUrl: '/imagenes/trabajos/audiTrabajo1.jpg', mediaType: 'image',
+    media: [
+      { url: '/imagenes/trabajos/audiTrabajo1.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/audiTrabajo2.jpg', type: 'image' },
+      { url: '/videos/audiTrabajoVideo.mp4', type: 'video' },
+    ],
+    description: 'Se realizó un control del reloj de presión de turbo y aceite, junto con la reinstalación completa del cableado original, producto de un corte previo. El trabajo garantizó lecturas precisas y funcionamiento eléctrico seguro.',
     layout: "lg:col-span-2 lg:row-span-2"
   },
   {
-    id: 2, title: 'Conversión LED', category: 'Iluminación', 
-    mediaUrl: '/imagenes/trabajos/trabajo2.jpg', mediaType: 'image',
-    description: 'Instalación de sistema de iluminación LED de alta eficiencia para mejor visibilidad.',
+    id: 2, title: 'Reparación y calibración', category: 'Instrumental y Electrónica', 
+    mediaUrl: '/imagenes/trabajos/TableroDigital1.jpg', mediaType: 'image',
+    media: [
+      { url: '/imagenes/trabajos/TableroDigital1.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/TableroDigital2.jpg', type: 'image' },
+    ],
+    description: 'Se realizó la reparación completa del tablero digital, con reemplazo de plaquetas dañadas, revisión de componentes electrónicos y calibración final para garantizar el funcionamiento correcto de todas las lecturas e indicadores.',
     layout: ""
   },
   {
-    id: 3, title: 'Restauración Instrumental', category: 'Instrumental', 
-    mediaUrl: '/imagenes/trabajos/trabajo3.jpg', mediaType: 'image',
-    description: 'Reparación y calibración de tablero de instrumentos digitales con componentes nuevos.',
-    layout: ""
-  },
-  {
-    id: 4, title: 'Pulido y Corrección', category: 'Estética', 
+    id: 3, title: 'Diagnóstico y calibración electrónica', category: 'Electromecánica', 
     mediaUrl: '/imagenes/trabajos/trabajo1.jpg', mediaType: 'image',
-    description: 'Tratamiento profesional de carrocería con pulido y protección cerámica.',
+    media: [
+      { url: '/imagenes/trabajos/trabajo1.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/trabajo1a.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/trabajo1b.jpg', type: 'image' },
+    ],
+    description: 'Chequeo y calibración de sistemas electrónicos con diagnóstico integral de instrumentos, reinstalación de cableado y verificación de funcionamiento.',
     layout: ""
   },
   {
-    id: 5, title: 'Reparación Alternador', category: 'Sistema Eléctrico', 
-    mediaUrl: 'https://images.unsplash.com/photo-1660985338689-fe31c0cda422', mediaType: 'image',
+    id: 4, title: 'Servicio de aire acondicionado', category: 'Climatización', 
+    mediaUrl: '/imagenes/trabajos/TrabajoAire.jpg', mediaType: 'image',
+    media: [
+      { url: '/imagenes/trabajos/TrabajoAire.jpg', type: 'image' },
+    ],
+    description: 'Control de presión, detección de fugas y recarga completa del sistema de aire acondicionado. Reparación de componentes y revisión del sistema de calefacción para garantizar un funcionamiento óptimo en todo clima.',
+    layout: ""
+  },
+  {
+    id: 5, title: 'Luces bajas Led', category: 'Iluminación', 
+    mediaUrl: '/imagenes/trabajos/TrabajoLed.jpg', mediaType: 'image',
+    media: [
+      { url: '/imagenes/trabajos/TrabajoLed.jpg', type: 'image' },
+      { url: '/videos/trabajos/VideoTrabajoLed.mp4', type: 'video' }, 
+    ],
+    description: 'Ingreso de Vento GLI para reemplazo de luces bajas. Se instalaron unidades originales con un tono más blanco a pedido del cliente, logrando una mejora estética y mayor claridad sin alterar el sistema original.',
+    layout: "lg:col-span-2"
+  },
+  {
+    id: 6, title: 'Instalación eléctrica náutica', category: 'Sistemas Eléctricos', 
+    mediaUrl: '/imagenes/trabajos/TrabajoLancha1.jpg', mediaType: 'image',
+    media: [
+      { url: '/videos/trabajos/videoTrabajoLancha.mp4', type: 'video' },
+      { url: '/imagenes/trabajos/TrabajoLancha1.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/TrabajoLancha2.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/TrabajoLancha3.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/TrabajoLancha4.jpg', type: 'image' },
+    ],
+    description: 'Instalación completa de sistema de audio, parlantes, ecosonda e iluminación LED. Integración de todos los componentes con calibración del volante y pruebas de funcionamiento para un control total a bordo.',
+    layout: "lg:col-span-2"
+  },
+  {
+    id: 7, title: 'Reparación Alternador', category: 'Sistema Eléctrico', 
+    mediaUrl: '/imagenes/trabajos/TrabajoPorsche1.jpg', mediaType: 'image',
+    media: [
+      { url: '/videos/trabajos/videoTrabajoPorsche.mp4', type: 'video' },
+      { url: '/imagenes/trabajos/TrabajoPorsche1.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/TrabajoPorsche2.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/TrabajoPorsche3.jpg', type: 'image' },
+    ],
     description: 'Diagnóstico y reparación de alternador con reemplazo de rodamientos y regulador.',
     layout: "lg:col-span-2"
   },
-  // Hidden items
-  { id: 6, title: 'Tratamiento de Ópticas', category: 'Estética', mediaUrl: 'https://images.unsplash.com/photo-1644497922836-4f31ef1f9575', mediaType: 'image', description: 'Restauración de faros opacos con pulido profesional y sellado protector UV.', layout: "" },
-  { id: 7, title: 'Servicio de Frenos', category: 'Seguridad', mediaUrl: 'https://images.unsplash.com/photo-1617153629088-b21a37c03c53', mediaType: 'image', description: 'Reemplazo de pastillas y discos de freno con componentes de alta calidad.', layout: "" },
-  { id: 8, title: 'Diagnóstico por Computadora', category: 'Diagnóstico', mediaUrl: 'https://videos.pexels.com/video-files/7573033/7573033-hd_1920_1080_30fps.mp4', mediaType: 'video', description: 'Análisis completo del vehículo con scanners de última generación para detectar fallas.', layout: "lg:col-span-2" },
 ];
 
 const Works = () => {
   const [ref, isInView] = useInView({ threshold: 0.1, once: true });
   const [visibleCount, setVisibleCount] = useState(5);
   const [selectedWork, setSelectedWork] = useState(null);
+  const [mediaIndex, setMediaIndex] = useState(0);
+
 
   const loadMore = () => setVisibleCount(prev => Math.min(prev + 3, allWorks.length));
 
   const itemVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+  };
+
+  const nextMedia = () => {
+  if (!selectedWork || !selectedWork.media) return;
+  setMediaIndex((prev) => (prev + 1) % selectedWork.media.length);
+  };
+
+  const prevMedia = () => {
+    if (!selectedWork || !selectedWork.media) return;
+    setMediaIndex((prev) => (prev - 1 + selectedWork.media.length) % selectedWork.media.length);
   };
 
   return (
@@ -81,13 +137,36 @@ const Works = () => {
                 variants={itemVariants}
                 layout
                 className={`group relative rounded-3xl overflow-hidden shadow-lg ${work.layout}`}
-                onClick={() => setSelectedWork(work)}
+                onClick={() => {
+                  setSelectedWork(work);
+                  setMediaIndex(0);
+                }}
               >
                 {work.mediaType === 'video' ? (
-                  <video className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out" autoPlay loop muted playsInline src={work.mediaUrl}></video>
+                  <video
+                    className={`absolute inset-0 w-full h-full ${
+                      [4, 6, 7].includes(work.id)
+                        ? 'object-contain bg-black'
+                        : 'object-cover'
+                    } group-hover:scale-110 transition-transform duration-500 ease-in-out`}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    src={work.mediaUrl}
+                  ></video>
                 ) : (
-                  <img className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out" alt={work.title} src={work.mediaUrl} />
+                  <img
+                    className={`absolute inset-0 w-full h-full ${
+                      [4, 6, 7].includes(work.id)
+                        ? 'object-contain bg-black'
+                        : 'object-cover'
+                    } group-hover:scale-110 transition-transform duration-500 ease-in-out`}
+                    alt={work.title}
+                    src={work.mediaUrl}
+                  />
                 )}
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                 <div className="absolute inset-0 p-6 flex flex-col justify-end">
                   <span className="inline-block bg-[#0B4F3A]/80 text-white text-xs font-semibold px-3 py-1 rounded-full mb-2 w-fit">
@@ -143,13 +222,67 @@ const Works = () => {
         <DialogContent className="bg-[#0F172A] border-green-700/50 text-white max-w-2xl p-0">
           {selectedWork && (
             <>
-              <div className="relative h-96">
-                {selectedWork.mediaType === 'video' ? (
-                  <video className="w-full h-full object-cover rounded-t-lg" autoPlay loop muted playsInline src={selectedWork.mediaUrl}></video>
+              <div className="relative h-96 flex items-center justify-center bg-black">
+                {selectedWork.media && selectedWork.media.length > 0 ? (
+                  <>
+                    {selectedWork.media[mediaIndex].type === 'video' ? (
+                      <video
+                        className="w-full h-full object-contain rounded-t-lg bg-black"
+                        controls
+                        playsInline
+                        muted
+                        preload="metadata"
+                      >
+                        <source src={selectedWork.media[mediaIndex].url} type="video/mp4" />
+                      </video>
+                    ) : (
+                      <img
+                        className="w-full h-full object-contain rounded-t-lg bg-black"
+                        alt={selectedWork.title}
+                        src={selectedWork.media[mediaIndex].url}
+                      />
+                    )}
+
+                    {selectedWork.media.length > 1 && (
+                      <>
+                        <button
+                          onClick={prevMedia}
+                          className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 rounded-full p-2 transition"
+                        >
+                          <ChevronLeft className="w-6 h-6 text-white" />
+                        </button>
+                        <button
+                          onClick={nextMedia}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 rounded-full p-2 transition"
+                        >
+                          <ChevronRight className="w-6 h-6 text-white" />
+                        </button>
+                      </>
+                    )}
+                  </>
                 ) : (
-                  <img className="w-full h-full object-cover rounded-t-lg" alt={selectedWork.title} src={selectedWork.mediaUrl} />
+                  <>
+                    {selectedWork.mediaType === 'video' ? (
+                      <video
+                        className="w-full h-full object-contain rounded-t-lg bg-black"
+                        controls
+                        playsInline
+                        muted
+                        preload="metadata"
+                      >
+                        <source src={selectedWork.mediaUrl} type="video/mp4" />
+                      </video>
+                    ) : (
+                      <img
+                        className="w-full h-full object-contain rounded-t-lg bg-black"
+                        alt={selectedWork.title}
+                        src={selectedWork.mediaUrl}
+                      />
+                    )}
+                  </>
                 )}
               </div>
+
               <DialogHeader className="p-6">
                 <DialogTitle className="text-2xl font-bold text-green-400">{selectedWork.title}</DialogTitle>
                 <DialogDescription className="text-gray-300 pt-2">
@@ -163,6 +296,7 @@ const Works = () => {
           )}
         </DialogContent>
       </Dialog>
+
     </section>
   );
 };

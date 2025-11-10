@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, PlayCircle, Award, Wrench, ShieldCheck } from 'lucide-react';
 import { Button } from './ui/button';
-import { useToast } from './ui/use-toast';
+import { Dialog, DialogContent } from './ui/dialog';
 
 const Hero = () => {
-  const { toast } = useToast();
-  
+  const [showVideo, setShowVideo] = useState(false);
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -14,12 +14,8 @@ const Hero = () => {
     }
   };
 
-  const showNotImplementedToast = () => {
-    toast({
-      title: '¡Próximamente!',
-      description: "Esta función de video aún no está implementada. ¡Puedes solicitarla en tu próximo mensaje!",
-      duration: 3000,
-    });
+  const videoTaller = () => {
+    setShowVideo(true);
   };
 
   const features = [
@@ -48,7 +44,7 @@ const Hero = () => {
           loop
           muted
           playsInline
-          src="/videos/videofondo.mp4"
+          src="/videos/audiTrabajoVideo.mp4"
         ></video>
       </div>
 
@@ -118,7 +114,7 @@ const Hero = () => {
             </Button>
 
             <Button
-              onClick={showNotImplementedToast}
+              onClick={videoTaller}
               size="lg"
               variant="outline"
               className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-lg 
@@ -131,6 +127,24 @@ const Hero = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Modal Video Taller */}
+      <Dialog open={showVideo} onOpenChange={setShowVideo}>
+        <DialogContent 
+          className="bg-black border border-green-800/40 p-0 rounded-lg 
+                     max-w-[90vw] md:max-w-3xl lg:max-w-4xl 
+                     max-h-[90vh] overflow-visible flex flex-col items-center justify-center"
+        >
+          <div className="relative w-full h-full flex justify-center items-center">
+            <video
+              className="w-full h-auto max-h-[80vh] rounded-lg"
+              controls
+              playsInline
+              src="/videos/videoTaller.mp4"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Degradado inferior */}
       <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-b from-transparent to-[#111C17] z-40"></div>
