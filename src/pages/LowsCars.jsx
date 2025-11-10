@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  Sparkles,
-  ShieldCheck,
-  Instagram,
-  Lightbulb,
-  PaintBucket,
-  Clock,
-} from "lucide-react";
+import { ArrowLeft, Sparkles, ShieldCheck, Instagram, Lightbulb, PaintBucket, Clock} from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
@@ -68,7 +60,7 @@ const neon = {
     };
 
     const heroVideo = "/videos/lowcarFondo.mp4";
-    const jobVideo = "/videos/lowcarTrabajo.mp4"; // reemplazá con el video real
+    const jobVideo = "/videos/trabajos/videoLowcarTrabajo.mp4"; 
 
     const features = [
         { icon: Sparkles, title: "Corrección de pintura" },
