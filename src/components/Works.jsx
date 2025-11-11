@@ -73,7 +73,16 @@ const allWorks = [
     layout: "lg:col-span-2"
   },
   {
-    id: 7, title: 'Reparación Alternador', category: 'Sistema Eléctrico', 
+    id: 7, title: 'Reparación de alternadores y arranques', category: 'Electromecánica', 
+    mediaUrl: '/imagenes/trabajos/TrabajoAlternadores.jpg', mediaType: 'image',
+    media: [
+      { url: '/imagenes/trabajos/TrabajoAlternadores.jpg', type: 'image' },
+    ],
+    description: 'Prueba y diagnóstico en banco Rosell para alternadores y arranques. Se realiza testeo de fallas, medición de carga y verificación post reparación para garantizar el correcto funcionamiento antes de la reinstalación.',
+    layout: ""
+  },
+  {
+    id: 8, title: 'Reparación Alternador', category: 'Sistema Eléctrico', 
     mediaUrl: '/imagenes/trabajos/TrabajoPorsche1.jpg', mediaType: 'image',
     media: [
       { url: '/videos/trabajos/videoTrabajoPorsche.mp4', type: 'video' },
