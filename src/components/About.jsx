@@ -66,7 +66,7 @@ const About = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 5500); // cambia cada 5.5 segundos
+    }, 5500);
     return () => clearInterval(interval);
   }, []);
 

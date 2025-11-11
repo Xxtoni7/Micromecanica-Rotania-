@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Zap, Lightbulb, ArrowLeft, Cog, Cable, Fan, Boxes } from "lucide-react";
+import { Zap, Lightbulb, ArrowLeft, Cog, Cable, Fan, Boxes, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
@@ -79,6 +79,24 @@ const Repuestos = () => {
         { icon: Boxes, label: "Repuestos originales y alternativos" },
     ];
 
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const repuestos = [
+        { name: "Motor de arranque", image: "/imagenes/repuestos/repuesto1.jpg" },
+        { name: "Motor de Arranque", image: "/imagenes/repuestos/repuesto2.jpg" },
+        { name: "Repuestos en Iluminación", image: "/imagenes/repuestos/repuesto3.jpg" },
+        { name: "Repuestos en Iluminación", image: "/imagenes/repuestos/repuesto4.jpg" },
+        { name: "Sensores", image: "/imagenes/repuestos/repuesto5.jpg" },
+        { name: "Alternadores", image: "/imagenes/repuestos/repuesto6.jpg" },
+
+    ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % repuestos.length);
+        }, 6500);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <section className="bg-[#0E1612] text-white min-h-screen pt-8 sm:pt-8 pb-28 px-6 overflow-hidden">
@@ -132,106 +150,175 @@ const Repuestos = () => {
                         rounded-2xl text-center border border-white/10 hover:border-green-400/50 
                         transition relative overflow-hidden group shadow-[0_0_10px_rgba(0,0,0,0.3)]"
             >
-            <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
-            <motion.div
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                <motion.div
                 className="relative z-10 flex flex-col items-center justify-center h-full"
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.3 }}
-            >
+                >
                 <div className="flex flex-col items-center justify-center gap-2">
                     <c.icon className="w-10 h-10 text-green-400 drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]" />
                     <p className="font-semibold leading-tight text-center">{c.label}</p>
                 </div>
-            </motion.div>
-
+                </motion.div>
             </motion.div>
             ))}
         </div>
 
-        {/* Formulario */}
-        <div className="max-w-xl mx-auto bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-md">
+        {/* Formulario + carrusel de imagenes */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch max-w-6xl mx-auto">
+
+            <motion.div 
+            className="relative w-full h-[420px] lg:h-full rounded-3xl overflow-hidden border border-white/10 bg-black/20"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            >
+            {/* Carrusel */}
+            <motion.div
+                className="w-full h-full flex"
+                animate={{ x: `-${currentIndex * 100}%` }}
+                transition={{ duration: 0.9, ease: [0.25, 1, 0.35, 1] }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+            >
+                {repuestos.map((item, i) => (
+                <motion.div
+                    key={i}
+                    className="w-full h-full flex-shrink-0 relative"
+                >
+                    <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-0 left-0 bg-black/60 px-4 py-2 rounded-br-2xl">
+                    <h4 className="text-sm sm:text-base font-semibold text-white">{item.name}</h4>
+                    </div>
+                </motion.div>
+                ))}
+            </motion.div>
+
+            {/* Flechas visibles en móvil y pc */}
+            <div className="flex absolute inset-0 justify-between items-center px-3 z-20">
+                <button
+                onClick={() =>
+                    setCurrentIndex((prev) =>
+                    prev === 0 ? repuestos.length - 1 : prev - 1
+                    )
+                }
+                className="bg-black/40 hover:bg-black/70 p-2 rounded-full transition"
+                >
+                    <ChevronLeft className="text-white w-6 h-6" />
+                </button>
+                <button
+                onClick={() =>
+                    setCurrentIndex((prev) => (prev + 1) % repuestos.length)
+                }
+                className="bg-black/40 hover:bg-black/70 p-2 rounded-full transition"
+                >
+                    <ChevronRight className="text-white w-6 h-6" />
+                </button>
+            </div>
+
+            {/* Indicadores inferiores */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {repuestos.map((_, i) => (
+                <div
+                    key={i}
+                    className={`w-3 h-3 rounded-full transition-all ${
+                    i === currentIndex ? 'bg-green-400 scale-110' : 'bg-white/40'
+                    }`}
+                ></div>
+                ))}
+            </div>
+            </motion.div>
+
+            {/* Formulario */}
+            <div className="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-md">
             <h3 className="text-2xl font-bold mb-8 text-center">Realizá tu Consulta</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
+                <div>
                 <Label className="text-sm text-white/70">Nombre</Label>
                 <Input
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="bg-white/10 border-white/20 text-white"
-                placeholder="Tu nombre"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="bg-white/10 border-white/20 text-white"
+                    placeholder="Tu nombre"
                 />
-            </div>
+                </div>
 
-            <div>
+                <div>
                 <Label className="text-sm text-white/70">Teléfono</Label>
                 <Input
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                className="bg-white/10 border-white/20 text-white"
-                placeholder="Ej: 342-5415159"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="bg-white/10 border-white/20 text-white"
+                    placeholder="Ej: 342-5415159"
                 />
-            </div>
+                </div>
 
-            <div>
+                <div>
                 <Label className="text-sm text-white/70">Vehículo</Label>
                 <Input
-                name="vehicle"
-                value={formData.vehicle}
-                onChange={handleChange}
-                required
-                className="bg-white/10 border-white/20 text-white"
-                placeholder="Marca y modelo (ej: Fiat Cronos)"
+                    name="vehicle"
+                    value={formData.vehicle}
+                    onChange={handleChange}
+                    required
+                    className="bg-white/10 border-white/20 text-white"
+                    placeholder="Marca y modelo (ej: Fiat Cronos)"
                 />
-            </div>
+                </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                <Label className="text-sm text-white/70">Repuesto buscado</Label>
-                <Input
+                    <Label className="text-sm text-white/70">Repuesto buscado</Label>
+                    <Input
                     name="part"
                     value={formData.part}
                     onChange={handleChange}
                     required
                     className="bg-white/10 border-white/20 text-white"
                     placeholder="Ej: Alternador / Sensor / Bomba..."
-                />
+                    />
                 </div>
                 <div>
-                <Label className="text-sm text-white/70">Año (opcional)</Label>
-                <Input
+                    <Label className="text-sm text-white/70">Año (opcional)</Label>
+                    <Input
                     name="year"
                     value={formData.year}
                     onChange={handleChange}
                     className="bg-white/10 border-white/20 text-white"
                     placeholder="Ej: 2018"
-                />
+                    />
                 </div>
-            </div>
+                </div>
 
-            <div>
+                <div>
                 <Label className="text-sm text-white/70">Mensaje (opcional)</Label>
                 <Textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={4}
-                className="bg-white/10 border-white/20 text-white"
-                placeholder="Detalle extra (si lo tenés: código de pieza, foto, etc.)"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={4}
+                    className="bg-white/10 border-white/20 text-white"
+                    placeholder="Detalle extra (si lo tenés: código de pieza, foto, etc.)"
                 />
-            </div>
+                </div>
 
-            <Button
+                <Button
                 type="submit"
                 className="w-full bg-green-600 hover:bg-green-700 font-bold text-lg py-6 rounded-xl flex items-center justify-center"
-            >
+                >
                 Enviar
-            </Button>
+                </Button>
             </form>
+            </div>
         </div>
 
         <a
