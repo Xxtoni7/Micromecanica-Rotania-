@@ -60,16 +60,15 @@ const allWorks = [
     layout: "lg:col-span-2"
   },
   {
-    id: 6, title: 'Instalación eléctrica náutica', category: 'Sistemas Eléctricos', 
-    mediaUrl: '/imagenes/trabajos/TrabajoLancha1.jpg', mediaType: 'image',
+    id: 6, title: 'Corrección de pintura Amarok', category: 'Servicio Estético', 
+    mediaUrl: '/imagenes/trabajos/TrabajoAmarok3.jpg', mediaType: 'image',
     media: [
-      { url: '/videos/trabajos/videoTrabajoLancha.mp4', type: 'video' },
-      { url: '/imagenes/trabajos/TrabajoLancha1.jpg', type: 'image' },
-      { url: '/imagenes/trabajos/TrabajoLancha2.jpg', type: 'image' },
-      { url: '/imagenes/trabajos/TrabajoLancha3.jpg', type: 'image' },
-      { url: '/imagenes/trabajos/TrabajoLancha4.jpg', type: 'image' },
+      { url: '/videos/trabajos/VideoTrabajoAmarok.mp4', type: 'video' },
+      { url: '/imagenes/trabajos/TrabajoAmarok.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/TrabajoAmarok2.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/TrabajoAmarok3.jpg', type: 'image' },
     ],
-    description: 'Instalación completa de sistema de audio, parlantes, ecosonda e iluminación LED. Integración de todos los componentes con calibración del volante y pruebas de funcionamiento para un control total a bordo.',
+    description: 'Corrección completa de pintura en Volkswagen Amarok. Se realizó pulido profesional, tratamiento de brillo profundo y retoques localizados, logrando una restauración estética integral del vehículo.',
     layout: "lg:col-span-2"
   },
   {
@@ -82,7 +81,20 @@ const allWorks = [
     layout: ""
   },
   {
-    id: 8, title: 'Reparación Alternador', category: 'Sistema Eléctrico', 
+    id: 8, title: 'Instalación eléctrica náutica', category: 'Sistemas Eléctricos', 
+    mediaUrl: '/imagenes/trabajos/TrabajoLancha1.jpg', mediaType: 'image',
+    media: [
+      { url: '/videos/trabajos/videoTrabajoLancha.mp4', type: 'video' },
+      { url: '/imagenes/trabajos/TrabajoLancha1.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/TrabajoLancha2.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/TrabajoLancha3.jpg', type: 'image' },
+      { url: '/imagenes/trabajos/TrabajoLancha4.jpg', type: 'image' },
+    ],
+    description: 'Instalación completa de sistema de audio, parlantes, ecosonda e iluminación LED. Integración de todos los componentes con calibración del volante y pruebas de funcionamiento para un control total a bordo.',
+    layout: ""
+  },
+  {
+    id: 9, title: 'Reparación Alternador', category: 'Sistema Eléctrico', 
     mediaUrl: '/imagenes/trabajos/TrabajoPorsche1.jpg', mediaType: 'image',
     media: [
       { url: '/videos/trabajos/videoTrabajoPorsche.mp4', type: 'video' },
@@ -102,7 +114,7 @@ const Works = () => {
   const [mediaIndex, setMediaIndex] = useState(0);
 
 
-  const loadMore = () => setVisibleCount(prev => Math.min(prev + 3, allWorks.length));
+  const loadMore = () => setVisibleCount(prev => Math.min(prev + 4, allWorks.length));
 
   const itemVariants = {
     hidden: { opacity: 0, scale: 0.8 },
@@ -154,7 +166,7 @@ const Works = () => {
                 {work.mediaType === 'video' ? (
                   <video
                     className={`absolute inset-0 w-full h-full ${
-                      [4, 6, 7].includes(work.id)
+                      [4, 6, ].includes(work.id)
                         ? 'object-contain bg-black'
                         : 'object-cover'
                     } group-hover:scale-110 transition-transform duration-500 ease-in-out`}
@@ -167,7 +179,7 @@ const Works = () => {
                 ) : (
                   <img
                     className={`absolute inset-0 w-full h-full ${
-                      [4, 6, 7].includes(work.id)
+                      [4, 7, 8].includes(work.id)
                         ? 'object-contain bg-black'
                         : 'object-cover'
                     } group-hover:scale-110 transition-transform duration-500 ease-in-out`}
