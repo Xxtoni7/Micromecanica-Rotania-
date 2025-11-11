@@ -127,9 +127,6 @@ const Contact = () => {
 
                 <InfoItem icon={<Clock />} title="Horarios" text="Lunes-Viernes: 9-12hs / 13:30-17hs" />
 
-                <InfoItem icon={<MessageCircle />} title="WhatsApp" text="+54 9 342 517-8440"
-                  link="https://wa.me/5493425178440" />
-
                 <InfoItem icon={<Instagram />} title="Instagram" text="Rotania Micromecanica SRL"
                   link="https://instagram.com/micromecanicarotaniasrl" />
 
@@ -157,7 +154,6 @@ const Contact = () => {
 };
 
 const InfoItem = ({ icon, title, text, link }) => {
-  // Cambiar el ícono de WhatsApp automáticamente
   const isWhatsApp = title === "WhatsApp";
   const displayIcon = isWhatsApp
     ? <FontAwesomeIcon icon={faWhatsapp} className="w-6 h-6 text-green-300" />
