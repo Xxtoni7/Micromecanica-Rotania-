@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
-import { Compass, Users, Settings } from 'lucide-react';
+import { Compass, Users, Settings, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+
 
 const About = () => {
 
@@ -53,6 +55,21 @@ const About = () => {
     },
   };
 
+  const images = [
+  '/imagenes/taller/TallerImg1.jpg',
+  '/imagenes/taller/TallerImg2.jpg',
+  '/imagenes/taller/TallerImg3.jpg',
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 5500); // cambia cada 5.5 segundos
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="nosotros" className="relative py-32 bg-[#111C17] overflow-hidden">
       <div className="absolute -left-1/4 top-0 w-1/2 h-full bg-gradient-to-r from-green-900/10 via-green-900/5 to-transparent rounded-full blur-3xl -rotate-45"></div>
@@ -101,22 +118,59 @@ const About = () => {
             variants={imageVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="relative h-[500px] w-full"
+            className="relative h-[500px] w-full overflow-hidden rounded-2xl"
           >
-            <div
-              className="absolute inset-0 bg-gradient-to-br from-[#0B4F3A] to-green-800"
-              style={{
-                clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)',
-              }}
-            ></div>
-            <img
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{
-                clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)',
-              }}
-              alt="Mecánico trabajando en un motor con herramientas avanzadas"
-              src="/imagenes/imgAbout.jpg"
-            />
+            <motion.div
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              className="absolute inset-0 flex"
+              animate={{ x: `-${currentIndex * 100}%` }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {images.map((src, i) => (
+                <motion.img
+                  key={i}
+                  src={src}
+                  alt={`Imagen ${i + 1}`}
+                  className="w-full flex-shrink-0 object-cover"
+                  style={{
+                    clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)',
+                  }}
+                />
+              ))}
+            </motion.div>
+
+            {/* Botones laterales solo en desktop */}
+            <div className="hidden sm:flex absolute inset-0 justify-between items-center px-3 z-20">
+              <button
+                onClick={() =>
+                  setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+                }
+                className="bg-black/40 hover:bg-black/70 p-2 rounded-full transition"
+              >
+                <ChevronLeft className="text-white w-6 h-6" />
+              </button>
+              <button
+                onClick={() =>
+                  setCurrentIndex((prev) => (prev + 1) % images.length)
+                }
+                className="bg-black/40 hover:bg-black/70 p-2 rounded-full transition"
+              >
+                <ChevronRight className="text-white w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Indicadores inferiores */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {images.map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-3 h-3 rounded-full transition-all ${
+                    i === currentIndex ? 'bg-green-400 scale-110' : 'bg-white/40'
+                  }`}
+                ></div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
