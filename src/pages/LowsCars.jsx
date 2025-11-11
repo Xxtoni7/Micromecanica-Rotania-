@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Sparkles, ShieldCheck, Instagram, Lightbulb, PaintBucket, Clock} from "lucide-react";
+import { ArrowLeft, Sparkles, ShieldCheck, Instagram, Lightbulb, PaintBucket, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
@@ -46,9 +46,7 @@ const neon = {
         `Servicio: ${formData.service}\n` +
         `Mensaje: ${formData.message}`;
 
-        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-        text
-        )}`;
+        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
         window.open(url, "_blank");
 
         toast({
@@ -60,7 +58,6 @@ const neon = {
     };
 
     const heroVideo = "/videos/lowcarFondo.mp4";
-    const jobVideo = "/videos/trabajos/videoLowcarTrabajo.mp4"; 
 
     const features = [
         { icon: Sparkles, title: "Corrección de pintura" },
@@ -70,6 +67,18 @@ const neon = {
         { icon: PaintBucket, title: "Pintura de llantas" },
         { icon: Clock, title: "Entrega en 24/48 hs" },
     ];
+
+    const videos = [
+        { title: "PPF y Tratamiento Acrílico", src: "/videos/trabajos/videoLowcarTrabajo.mp4" },
+        { title: "Corrección de pintura", src: "/videos/trabajos/VideoTrabajoAmarok.mp4" },
+        { title: "PPF", src: "/videos/trabajos/TrabajoMercedes.mp4" },
+        { title: "Protección cerámica", src: "/videos/trabajos/TrabajoFiat.mp4" },
+    ];
+
+    const [current, setCurrent] = useState(0);
+
+    const next = () => setCurrent((prev) => (prev + 1) % videos.length);
+    const prev = () => setCurrent((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
 
     return (
         <section className="bg-[#161616] text-white min-h-screen overflow-hidden">
@@ -86,7 +95,6 @@ const neon = {
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black" />
 
             <div className="relative z-10 h-full flex flex-col justify-between">
-            {/* Top bar */}
             <div className="flex items-center justify-between px-6 pt-6">
                 <Button
                 onClick={() => {
@@ -127,14 +135,10 @@ const neon = {
                 LowCars
                 </h1>
                 <p className="text-gray-200/90 max-w-2xl mx-auto mt-3">
-                Sector especializado en restauración, detallado y protección
-                integral de vehículos.
+                Sector especializado en restauración, detallado y protección integral de vehículos.
                 </p>
 
-                {/* Por qué elegirnos - versión corta */}
-                <p className="text-gray-200/80 mt-12 font-semibold">
-                ¿Por qué elegirnos?
-                </p>
+                <p className="text-gray-200/80 mt-12 font-semibold">¿Por qué elegirnos?</p>
                 <div className="mt-2 flex flex-wrap gap-2 justify-center text-xs sm:text-sm">
                 <span className="px-3 py-1 rounded-full bg-white/5 border border-white/15">
                     Equipos y productos profesionales
@@ -148,7 +152,7 @@ const neon = {
                 </div>
             </motion.div>
 
-            {/* CTA primaria */}
+            {/* WPP */}
             <div className="flex justify-center pb-8">
                 <motion.a
                 whileHover={{ scale: 1.03 }}
@@ -169,7 +173,7 @@ const neon = {
             <div className="absolute left-0 top-0 h-[3px] w-full bg-gradient-to-r from-transparent via-[#FDE047] to-transparent animate-pulse" />
         </div>
 
-        {/* FEATURES - carrusel en móvil, grid en desktop */}
+        {/* FEATURES */}
         <div className="container mx-auto px-6 py-14">
             <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -181,18 +185,10 @@ const neon = {
             {features.map((f, i) => (
                 <div
                 key={i}
-                className={`
-                    flex-shrink-0 w-60 snap-center
-                    sm:w-auto
-                    group bg-white/5 border ${neon.border} rounded-2xl p-6 text-center
-                    hover:bg-white/[0.07] transition
-                `}
+                className={`flex-shrink-0 w-60 snap-center sm:w-auto group bg-white/5 border ${neon.border} rounded-2xl p-6 text-center hover:bg-white/[0.07] transition`}
                 >
                 <div
-                    className={`
-                    mx-auto w-14 h-14 rounded-xl bg-black/60 flex items-center justify-center mb-4
-                    ${neon.glow}
-                    `}
+                    className={`mx-auto w-14 h-14 rounded-xl bg-black/60 flex items-center justify-center mb-4 ${neon.glow}`}
                 >
                     <f.icon className={`${neon.text} w-7 h-7`} />
                 </div>
@@ -202,7 +198,7 @@ const neon = {
             </motion.div>
         </div>
 
-        {/* RESULTADOS REALES - VIDEO */}
+        {/* RESULTADOS REALES - CARRUSEL */}
         <div className="container mx-auto px-6 pb-20">
             <motion.h2
             initial={{ opacity: 0, y: 14 }}
@@ -214,20 +210,69 @@ const neon = {
             Resultados reales
             </motion.h2>
 
-            <div className="relative w-full max-w-5xl mx-auto aspect-[16/9] rounded-2xl overflow-hidden border border-white/10">
-            <video
-                className="w-full h-full object-cover"
-                src={jobVideo}
-                controls
-                playsInline
-            />
+            <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative w-full max-w-6xl mx-auto"
+            >
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/30 backdrop-blur-lg">
+                <motion.div
+                key={current}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8, ease: [0.25, 1, 0.35, 1] }}
+                className="w-full aspect-[9/12] sm:aspect-[16/9]"
+                >
+                <video
+                    src={videos[current].src}
+                    className="w-full h-full object-cover rounded-3xl"
+                    controls
+                    playsInline
+                />
+
+                <div className="absolute top-0 left-0 bg-gradient-to-b from-black/70 to-transparent px-5 py-3 rounded-tr-2xl">
+                    <h4 className="text-lg sm:text-xl font-semibold text-white drop-shadow-md">
+                    {videos[current].title}
+                    </h4>
+                </div>
+                </motion.div>
+
+                {/* Botones laterales */}
+                <button
+                onClick={prev}
+                className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-2 rounded-full transition z-10 border border-[#FDE047]/50"
+                >
+                    <ChevronLeft className="text-white w-6 h-6" />
+                </button>
+                <button
+                onClick={next}
+                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-2 rounded-full transition z-10 border border-[#FDE047]/50"
+                >
+                    <ChevronRight className="text-white w-6 h-6" />
+                </button>
             </div>
+
+            {/* Indicadores inferiores */}
+            <div className="flex justify-center mt-4 gap-3">
+                {videos.map((_, i) => (
+                <button
+                    key={i}
+                    onClick={() => setCurrent(i)}
+                    className={`w-3 h-3 rounded-full transition-all ${
+                    i === current ? "bg-[#FDE047]" : "bg-white/30"
+                    }`}
+                ></button>
+                ))}
+            </div>
+            </motion.div>
         </div>
 
         {/* CTA + FORM */}
         <div className="container mx-auto px-6 pb-28">
             <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-            {/* Brand / Instagram */}
             <motion.div
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -239,9 +284,7 @@ const neon = {
                 src="/Logo/LowCar.jpg"
                 alt="Logo LowCars"
                 className="w-40 h-40 object-cover rounded-full border-2 border-[#FDE047] shadow-lg shadow-[#FDE047]/40"
-                style={{
-                    filter: "drop-shadow(0 0 25px rgba(253,224,71,0.45))",
-                }}
+                style={{ filter: "drop-shadow(0 0 25px rgba(253,224,71,0.45))" }}
                 />
 
                 <a
@@ -255,7 +298,6 @@ const neon = {
                 </a>
             </motion.div>
 
-            {/* Formulario */}
             <motion.form
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -264,9 +306,7 @@ const neon = {
                 onSubmit={handleSubmit}
                 className={`rounded-3xl p-8 bg-white/[0.04] border ${neon.border}`}
             >
-                <h3
-                className={`text-2xl font-bold mb-6 ${neon.text} ${neon.glow}`}
-                >
+                <h3 className={`text-2xl font-bold mb-6 ${neon.text} ${neon.glow}`}>
                 Reserva tu turno
                 </h3>
 
@@ -323,18 +363,10 @@ const neon = {
                         Pulido y corrección de pintura
                     </option>
                     <option value="PPF">PPF</option>
-                    <option value="Restauración de ópticas">
-                        Restauración de ópticas
-                    </option>
-                    <option value="Limpieza de interiores">
-                        Limpieza de interiores
-                    </option>
-                    <option value="Restauración de llantas">
-                        Restauración de llantas
-                    </option>
-                    <option value="Consultas generales">
-                        Consultas generales
-                    </option>
+                    <option value="Restauración de ópticas">Restauración de ópticas</option>
+                    <option value="Limpieza de interiores">Limpieza de interiores</option>
+                    <option value="Restauración de llantas">Restauración de llantas</option>
+                    <option value="Consultas generales">Consultas generales</option>
                     </select>
                 </div>
 
@@ -369,10 +401,7 @@ const neon = {
             target="_blank"
             rel="noreferrer"
         >
-            <FontAwesomeIcon
-            icon={faWhatsapp}
-            className={`${neon.text} w-6 h-6`}
-            />
+            <FontAwesomeIcon icon={faWhatsapp} className={`${neon.text} w-6 h-6`} />
         </a>
         </section>
     );
