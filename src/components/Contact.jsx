@@ -146,7 +146,20 @@ const Contact = () => {
 
       <footer className="mt-32 border-t border-white/10 pt-8">
         <div className="container mx-auto px-4 text-center text-gray-500">
-          <p className="mb-2">© 2025 Micromecánica Rotania SRL. Todos los derechos reservados.</p>
+          <p className="mb-2">
+            © 2025 Micromecánica Rotania SRL. Todos los derechos reservados.
+          </p>
+          <p className="text-sm">
+            Desarrollado por{" "}
+            <a
+              href="https://www.linkedin.com/in/toni-riveros316321/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-400 hover:text-green-300 underline-offset-2 hover:underline transition"
+            >
+              Antonio Riveros
+            </a>
+          </p>
         </div>
       </footer>
     </section>
