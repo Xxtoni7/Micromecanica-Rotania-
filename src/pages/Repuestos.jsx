@@ -307,7 +307,7 @@ const Repuestos = () => {
                     onChange={handleChange}
                     rows={4}
                     className="bg-white/10 border-white/20 text-white"
-                    placeholder="Detalle extra (si lo tenés: código de pieza, foto, etc.)"
+                    placeholder="Detalle extra (si lo tenés: código de pieza, nombre, etc.)"
                 />
                 </div>
 

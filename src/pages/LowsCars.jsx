@@ -132,7 +132,7 @@ const neon = {
                 className={`text-[12vw] sm:text-6xl md:text-7xl font-black uppercase tracking-tighter ${neon.text} ${neon.glow}`}
                 style={{ textShadow: "0 0 24px rgba(253,224,71,0.45)" }}
                 >
-                LowCars
+                LowsCar
                 </h1>
                 <p className="text-gray-200/90 max-w-2xl mx-auto mt-3">
                 Sector especializado en restauración, detallado y protección integral de vehículos.

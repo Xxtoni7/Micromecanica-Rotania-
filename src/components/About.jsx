@@ -140,8 +140,8 @@ const About = () => {
               ))}
             </motion.div>
 
-            {/* Botones laterales solo en desktop */}
-            <div className="hidden sm:flex absolute inset-0 justify-between items-center px-3 z-20">
+            {/* Botones laterales  */}
+            <div className="flex absolute inset-0 justify-between items-center px-3 z-20">
               <button
                 onClick={() =>
                   setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
