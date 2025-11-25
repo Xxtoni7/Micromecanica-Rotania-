@@ -20,19 +20,13 @@ function App() {
 
   return (
     <>
-      <Helmet>
-        <title>Micromecánica Rotania SRL - Pioneros en Instrumental Automotor</title>
-        <meta name="description" content="Especialistas en reparación de instrumental automotor, aire acondicionado, alternadores, arranque y más. +30 años de experiencia con tecnología de diagnóstico avanzada." />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" />
-      </Helmet>
-      
       {!hideNavbar && <Navbar />}
 
       <main
         className={`text-white font-poppins ${
           hideNavbar
-          ? "min-h-[100vh]" // ocupa solo la pantalla sin reservar hueco
-          : "min-h-screen"  // home mantiene su diseño con navbar
+          ? "min-h-[100vh]" 
+          : "min-h-screen"  
           }`
         }
       >
